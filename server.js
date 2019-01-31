@@ -34,7 +34,6 @@ const loadCollection = function(colName, _db) {
 // Delete existing files helper ( to avoid to many files being uploaded)
 const cleanUploads = async function(folderPath) {
   try {
-    console.log(`${folderPath}/**`);
     await del.sync([`${folderPath}/**`, `!${folderPath}`]);
     console.info("INFO: Cleaned all previosly uploaded files!");
   } catch (e) {
@@ -65,7 +64,6 @@ const getFileHandler = async (req, res, next) => {
   try {
     const collection = await loadCollection("files", db);
     if (!req.params.id) {
-      console.log(collection.data);
       return res.send(collection.data);
     }
     const result = collection.get(req.params.id);
