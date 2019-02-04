@@ -82,6 +82,6 @@ app.post("/api/fileanalyse", upload.single("upfile"), fileUploadHandler);
 app.get("/api/files/:id?", getFileHandler);
 
 app.listen(process.env.PORT || 3000, function() {
-  console.log("SERVER: Node.js listening on PORT:", process.env.PORT);
+  console.log("SERVER: Node.js listening on PORT:", process.env.PORT || 3000);
   cleanUploads(UPLOAD_PATH);
 });
